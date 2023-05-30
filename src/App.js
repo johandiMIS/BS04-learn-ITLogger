@@ -4,6 +4,8 @@ import './App.css';
 import { Fragment, useEffect } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
+import AddBtn from './components/layout/AddBtn';
+import AddLogModal from './components/logs/AddLogModal';
 
 const App = () => {
   useEffect(()=>{
@@ -13,9 +15,12 @@ const App = () => {
   return (
     <Fragment>
       <SearchBar/>
-      <div className='container'>
+      <div className='container '>
         <Logs/>
+        <AddLogModal/>
+        <AddBtn/>
       </div>
+      
     </Fragment>
   );
 }
