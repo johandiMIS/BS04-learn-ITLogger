@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 const AddLogModal = props => {
     const [message, setMessage] = useState('')
     const [attention, setAttention] = useState(false)
-    const [ tech, setTech] = useState('')
+    const [tech, setTech] = useState('')
+
+    const onSubmit = ()=>{
+        console.log(message, tech, attention)
+    }
 
     return (
         <div id='add-log-modal' className='modal' style={modalStyle}>
@@ -30,13 +34,19 @@ const AddLogModal = props => {
                 <div className='row'>
                     <div className='input-field'>
                         <p>
-                            <label htmlFor='message' className='active'>
-                                <input type='checkbox' className='filled-in' checked={attention} value={attention} onChange={e => setAttention(!attention)}/>
+                            <label>
+                                <input type='checkbox' className='filled-in' checked={attention} value={attention} onChange={()=> setAttention(!attention)}/>
                                 <span>Need Attention</span>
                             </label>
                         </p>
                     </div>
                 </div>
+            </div>
+            <div className='modal-footer'>
+                <a href='#!' onClick={onSubmit} className='modal-close waves-effect waves-green btn-flat'>
+                    Enter
+                </a>
+
             </div>
         </div>
   )

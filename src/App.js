@@ -9,7 +9,6 @@ import AddLogModal from './components/logs/AddLogModal';
 
 const App = () => {
   useEffect(()=>{
-    // Init materialize
     M.AutoInit()
   })
   return (
