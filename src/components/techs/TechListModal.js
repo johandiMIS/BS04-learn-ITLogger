@@ -26,7 +26,7 @@ const TechListModal = () => {
                 <ul className='collection'>
                     {!loading && techs.length <= 0? (<p className='center'>  No Tech To Show...</p>):(
                         // techs.map((tech) => <LogItem tech={tech} key={log.id}/>)
-                        techs.map((tech) => <TechItem tech={tech}/> )
+                        techs.map((tech) => <TechItem tech={tech} key={tech.id}/> )
                     )}
                 </ul>
             </div>
