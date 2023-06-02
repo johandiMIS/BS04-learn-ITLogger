@@ -82,7 +82,6 @@ const modalStyle= {
 }
 
 AddLogModal.propTypes = {
-    log: PropTypes.object.isRequired,
     addLogs: PropTypes.func.isRequired,
 }
 

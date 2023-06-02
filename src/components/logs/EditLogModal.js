@@ -1,27 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { connect } from 'react-redux'
+import { updateLog } from '../../actions/logAction'
 
-const EditLogModal = () => {
+const EditLogModal = ({current, updateLog}) => {
     const [message, setMessage] = useState('')
     const [attention, setAttention] = useState(false)
     const [tech, setTech] = useState('')
+
+    
+    useEffect(()=>{
+        if (current){
+            setMessage(current.message)
+            setAttention(current.attention)
+            setTech(current.tech)  
+        }
+    }, [current])
 
     const onSubmit = ()=>{
         if (message === '' || tech === ''){
             M.toast({html:"Please enter message and tech..."})
         }
         else{
-            console.log(message, tech, attention)     
+            const editData = {
+                id: current.id,
+                message:message,
+                tech:tech,
+                attention:attention,
+                date: new Date(),
+            }
+
+            updateLog(editData)
+
+            M.toast({html: `Log updated by ${editData.tech}`})
             setMessage('')
             setAttention(false)
             setTech('')
+
         }
     }
         
     return (
         <div id='edit-log-modal' className='modal' style={modalStyle}>
             <div className='modal-content'>
-                <h4>Enter System Log</h4>
+                <h4>Edit System Log</h4>
                 <div className='row'>
                     <div className='input-field'>
                         <input type='text' name='message' value={message} onChange={e => setMessage(e.target.value)}/>
@@ -55,7 +77,6 @@ const EditLogModal = () => {
                 <a href='#!' onClick={onSubmit} className='modal-close waves-effect waves-blue waves-light btn'>
                     Enter
                 </a>
-
             </div>
         </div>
   )
@@ -66,5 +87,11 @@ const modalStyle= {
     height: '75%',
 
 }
+const mapStateToProps = state =>({
+    current:state.log.current,
+})
 
-export default EditLogModal
+export default connect(
+    mapStateToProps,
+    {updateLog}
+)(EditLogModal)
