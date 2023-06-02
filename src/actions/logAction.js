@@ -14,7 +14,7 @@ export const searchLogs = (keyword) => async (dispatch) =>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            payload: err.response.data,
+            payload: err.repsonse.statusText,
         })
     }
 }
@@ -40,7 +40,7 @@ export const updateLog = (log) => async (dispatch) => {
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            payload: err.response.data,
+            payload: err.repsonse.statusText,
         })
     }
 }
@@ -73,7 +73,7 @@ export const deleteLogs = (id) => async (dispatch) =>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            payload: err.response.data,
+            payload: err.repsonse.statusText,
         })
     }
 }
@@ -99,7 +99,7 @@ export const addLogs = (log) => async (dispatch) =>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            payload: err.response.data,
+            payload: err.repsonse.statusText,
         })
     }
 }
@@ -118,7 +118,7 @@ export const getLogs = () => async (dispatch) =>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            payload: err.response.data,
+            payload: err.repsonse.statusText,
         })
     }
 }
