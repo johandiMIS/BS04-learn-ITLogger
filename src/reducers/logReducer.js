@@ -1,7 +1,9 @@
 import {
     GET_LOGS, 
     SET_LOADING, 
-    LOGS_ERROR
+    LOGS_ERROR,
+    ADD_LOG,
+    DELETE_LOGS
 } from '../actions/types'
 
 const initialState = {
@@ -13,6 +15,18 @@ const initialState = {
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state = initialState, action) => {
     switch (action.type){
+        case DELETE_LOGS:
+            return {
+                ...state,
+                logs: state.logs.filter((log) => log.id !== action.payload),
+                loading: false,
+            }
+        case ADD_LOG:
+            return {
+                ...state,
+                logs: [...state.logs, action.payload],
+                loading: false,
+            }
         case GET_LOGS:
             return {
                 ...state,
