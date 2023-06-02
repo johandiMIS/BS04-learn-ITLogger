@@ -6,7 +6,8 @@ import {
     DELETE_LOGS,
     SET_CURRENT,
     CLEAR_CURRENT,
-    UPDATE_LOG
+    UPDATE_LOG,
+    SEARCH_LOGS
 } from '../actions/types'
 
 const initialState = {
@@ -18,6 +19,12 @@ const initialState = {
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state = initialState, action) => {
     switch (action.type){
+        case SEARCH_LOGS:
+            return {
+                ...state,
+                logs: action.payload,
+                loading:false,
+            }
         case UPDATE_LOG:
             return {
                 ...state,
