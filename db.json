@@ -10,9 +10,9 @@
     {
       "id": 2,
       "message": "Workstation 007 not posting",
-      "tech": "John Doe",
+      "tech": "johandi lim",
       "attention": false,
-      "date": "2023-06-02T07:18:37.384Z"
+      "date": "2023-06-03T06:17:09.426Z"
     }
   ],
   "techs": [
@@ -27,9 +27,9 @@
       "lastName": "Smith"
     },
     {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
+      "firstName": "johandi",
+      "lastName": "lim",
+      "id": 5
     }
   ]
 }

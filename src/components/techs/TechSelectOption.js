@@ -2,14 +2,14 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-const TechSelectOption = ({techs}) => {
+const TechSelectOption = ({techs, loading}) => {
   return (
     <Fragment>
         <option value='' disabled>
             Select Technician
         </option>
         {techs.map((tech) => {
-            return <option key={tech.id} value={`${tech.firstName} ${tech.lastName}`}>{tech.firstName}{' '}{tech.lastName}</option>
+            return ( !loading && techs.length >= 0 && <option key={tech.id} value={`${tech.firstName} ${tech.lastName}`}>{tech.firstName}{' '}{tech.lastName}</option> )
         })}
     </Fragment>
   )
@@ -21,6 +21,7 @@ TechSelectOption.propTypes = {
 
 const mapStateToProps = (state) =>( {
     techs: state.tech.techs,
+    laoding: state.tech.loading,
 })
 
 export default connect(

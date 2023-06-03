@@ -1,4 +1,6 @@
 import {
+    ADD_TECH,
+    DELETE_TECH,
     GET_TECHS, SET_LOADING, TECHS_ERROR,
 } from '../actions/types'
 
@@ -10,6 +12,18 @@ const initialState = {
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (state=initialState, action)=>{
     switch(action.type){
+        case DELETE_TECH:
+            return {
+                ...state,
+                loading: false,
+                techs: state.techs.filter((tech)=> tech.id !== action.payload )
+            }
+        case ADD_TECH:
+            return {
+                ...state,
+                loading:false,
+                techs: [...state.techs, action.payload],
+            }
         case SET_LOADING:
             return {
                 ...state,

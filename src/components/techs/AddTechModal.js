@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { addTechs } from '../../actions/techAction'
+import { connect } from 'react-redux'
 
-const AddTechModal = () => {
+const AddTechModal = ({addTechs}) => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
 
@@ -11,6 +13,12 @@ const AddTechModal = () => {
         }
         else{
             console.log(firstName, lastName)
+            const newTech = {
+                firstName: firstName,
+                lastName:lastName,
+            }
+            addTechs(newTech)
+            M.toast({html:"New tech added..."})
             setFirstName('')
             setLastName('')
         }
@@ -43,4 +51,7 @@ const AddTechModal = () => {
   )
 }
 
-export default AddTechModal
+export default connect(
+    null,
+    {addTechs}
+)(AddTechModal)
